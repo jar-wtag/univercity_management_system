@@ -1,0 +1,22 @@
+<div class="student_profile show container">
+  <div class="row">
+    <%= link_to("Back", student_profiles_path(ids: @section.student_profiles.ids, section_id: @section), class: 'btn btn-primary') %>
+    <div class="student_profile show">
+      <h2> Show StudentProfile</h2>
+      <table class="table table-bordered table-stripped width_setting">
+        <tr>
+          <th>Name: </th>
+          <td> <%= @student.name %></td>
+        </tr>
+        <tr>
+          <th>Age: </th>
+          <td> <%= @student.age %></td>
+        </tr>
+        <tr>
+          <th>Roll: </th>
+          <td> <%= @student.roll %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

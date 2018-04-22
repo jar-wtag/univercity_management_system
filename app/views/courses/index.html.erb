@@ -1,0 +1,42 @@
+<div class=" section index container">
+  <div class="row">
+    <%= link_to("Back to Home", departments_path) %>
+    <br/><br/>
+
+    <div class="courses index">
+      <h2> Courses </h2>
+      <%= link_to("Add New Course", new_department_course_path, class: "btn btn-primary") %>
+      <br/><br/>
+      <table class="table table-bordered table-stripped width_setting" class="listing" summary="subject-list">
+        <tr class="header">
+          <th>Id</th>
+          <th> Courses</th>
+          <th> Course_code</th>
+          <th>Sections</th>
+          <th> Actions</th>
+        </tr>
+        <% @courses.each do |course| %>
+          <tr>
+            <td>
+              <%= course.id %>
+            </td>
+            <td>
+              <%= course.name %>
+            </td>
+            <td>
+              <%= course.course_code %>
+            </td>
+            <td>
+              <%= link_to(course.sections.count, department_course_sections_path(ids: course.sections.ids, course_id: course.id)) %>
+            </td>
+            <td class="actions">
+              <%= link_to("Show", department_course_path(@department, course), class: "btn btn-primary") %>
+              <%= link_to("Edit", edit_department_course_path(@department, course), class: "btn btn-primary") %>
+              <%= link_to("Destroy", department_course_path(@department, course), method: :delete, data: {confirm: "Are you sure want to delete this?"}, class: "btn btn-primary") %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

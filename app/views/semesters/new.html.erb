@@ -1,0 +1,14 @@
+<%= link_to("Back", semeters_path, class: "btn btn-primary") %>
+
+<div class="section create">
+  <h2> New Section</h2>
+
+  <%= simple_form_for @semester do |f| %>
+
+    <%= f.input :name %>
+    <%= f.input :duration_in_month %>
+
+    <%= f.button :submit %>
+  <% end %>
+</div>
+

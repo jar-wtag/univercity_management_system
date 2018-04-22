@@ -1,0 +1,40 @@
+<div class=" student index container">
+  <div class="row">
+    <%= link_to("Back", department_path(@department), class: "back-link") %>
+    <div class=" student index">
+      <h2> Students List </h2>
+      <%= link_to("Add New Student", new_department_student_path, class: "add-new") %>
+      <br/><br/>
+      <table class="table table-bordered table-stripped width_setting" class="listing" summary="section-list">
+        <tr class="header">
+          <th>Id</th>
+          <th> Name</th>
+          <th> Age</th>
+          <th> Roll</th>
+          <th> Actions</th>
+        </tr>
+        <% @students.each do |student| %>
+          <tr>
+            <td>
+              <%= student.id %>
+            </td>
+            <td>
+              <%= student.name %>
+            </td>
+            <td>
+              <%= student.age %>
+            </td>
+            <td>
+              <%= student.roll %>
+            </td>
+            <td class="actions">
+              <%= link_to("Show", department_student_path(@department, student), class: "btn btn-primary") %>
+              <%= link_to("Edit", edit_department_student_path(@department, student), class: "btn btn-primary") %>
+              <%= link_to("Destroy", department_student_path(@department, student), method: :delete, data: {confirm: "Are you sure want to delete this?"}, class: "btn btn-primary") %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

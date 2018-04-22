@@ -1,0 +1,15 @@
+<%= link_to("Back", department_courses_path, class: "back-list" ) %>
+
+<div class="course create">
+  <h2> New Course</h2>
+
+  <%= form_for([@department, @course]) do |f| %>
+
+  <%= render(partial: 'courses/form', locals: {f: f}) %>
+
+    <div class="form_buttons">
+      <%= f.submit("Create Course") %>
+    </div>
+  <% end %>
+</div>
+

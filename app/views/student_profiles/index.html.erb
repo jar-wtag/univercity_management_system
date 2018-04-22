@@ -1,0 +1,43 @@
+<div class=" student_profile index container">
+  <div class="row">
+    <div class=" student_profile index">
+      <h4><span style="font-weight: bold;"> Department:</span> <%= @section.course.department.name %></h4>
+      <% if @student_profiles.count < 5 %>
+      <h4> Student Profiles in section no <%= @section.section_no %> and course is: <%= @section.course.name  %> </h4>
+      <%= link_to "Add new student in section no #{@section.section_no}", new_student_profile_path(ids: @students, section_id: @section.id), class: 'btn btn-primary' %>
+      <% end %>
+      <br/><br/>
+      <table class="table table-bordered table-stripped width_setting" class="listing" summary="section-list">
+        <tr class="header">
+          <th> Id</th>
+          <th> name</th>
+          <th> age</th>
+          <th> roll</th>
+          <th> Action</th>
+        </tr>
+        <% @student_profiles.each do |student_profile| %>
+          <tr>
+            <td>
+              <%= student_profile.id %>
+            </td>
+            <td>
+              <%= student_profile.student.name if student_profile.student %>
+            </td>
+            <td>
+              <%= student_profile.student.age if student_profile.student %>
+            </td>
+            <td>
+              <%= student_profile.student.roll if student_profile.student %>
+            </td>
+            <td class="actions">
+              <%= link_to("Show", student_profile_path(id: student_profile, section_id: @section.id), class: 'btn btn-primary') %>
+              <%= link_to("Edit", edit_student_profile_path(id: student_profile, section_id: @section.id), class: 'btn btn-primary') %>
+              <%= link_to("Destroy", student_profile_path(student_profile), class: 'btn btn-primary') %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+

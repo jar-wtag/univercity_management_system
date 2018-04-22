@@ -1,0 +1,42 @@
+<div class=" section index container">
+  <div class="row">
+    <div class="department index">
+      <h2> Index Department </h2>
+      <%= link_to("Add New Department", new_department_path ) %>
+      <table class="table table-bordered table-stripped width_setting" class="listing" summary="subject-list">
+        <tr class="header">
+          <th> Department Id</th>
+          <th> Departments</th>
+          <th> Credit</th>
+          <th> Students</th>
+          <th> Courses</th>
+          <th> Actions</th>
+        </tr>
+        <% @departments.each do |department| %>
+        <tr>
+          <td>
+            <%= department.id %>
+          </td>
+          <td>
+            <%= department.name %>
+          </td>
+          <td>
+            <%= department.credit %>
+          </td>
+          <td>
+            <%= department.students.count %>
+          </td>
+          <td>
+            <%= department.courses.count %>
+          </td>
+          <td class="actions">
+            <%= link_to("Show", department_path(department) , class: "link-show", class: "btn btn-primary") %>
+            <%= link_to("Edit", edit_department_path(department), class: "link-edit", class: "btn btn-primary") %>
+            <%= link_to("Destroy", department_path(department), method: :delete, data: {confirm: "Are you sure want to delete this?"}, class: "btn btn-primary") %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

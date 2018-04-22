@@ -1,0 +1,28 @@
+<div class=" section index container">
+  <div class="row">
+    <%= link_to("Back", department_courses_path, class: "back-list" ) %>
+
+    <div class="course show">
+      <h2> Show Course</h2>
+      <table class="table table-bordered table-stripped width_setting" class="course Detail View">
+        <tr>
+          <th>Name </th>
+          <td> <%= @course.name %></td>
+        </tr>
+        <tr>
+          <th>Course Code </th>
+          <td> <%= @course.course_code %></td>
+        </tr>
+        <tr>
+          <th>Created At </th>
+          <td> <%= @course.created_at %></td>
+        </tr>
+        <tr>
+          <th>Updated At </th>
+          <td> <%= @course.updated_at %></td>
+        </tr>
+      </table>
+    </div>
+    <%= link_to("Sections", department_course_sections_path(@department, @course)) %>
+  </div>
+</div>

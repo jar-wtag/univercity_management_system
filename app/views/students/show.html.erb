@@ -1,0 +1,55 @@
+<div class=" section index container">
+  <div class="row">
+
+<%= link_to("Back", department_students_path, class: "btn btn-primary" ) %>
+
+<div class="Student show">
+  <h2> Show Student</h2>
+  <table class="table table-bordered table-stripped width_setting">
+    <tr class="border">
+      <th>Name </th>
+      <td> <%= @student.name %></td>
+    </tr>
+    <tr>
+      <th>Age </th>
+      <td> <%= @student.age %></td>
+    </tr>
+    <tr>
+      <th>Roll </th>
+      <td> <%= @student.roll %></td>
+    </tr>
+  </table>
+</div>
+
+<br/><br/><br/><br/>
+
+<div class="student details">
+  <h2> Courses Taken This Semester</h2>
+  <table class="table table-bordered table-stripped width_setting">
+    <tr>
+      <th>Course Code</th>
+      <th>Course Name</th>
+      <th>Section No</th>
+      <th>Department</th>
+    </tr>
+    <% @student.sections.each do |section| %>
+     <tr>
+       <td>
+         <%= section.course.course_code %>
+       </td>
+       <td>
+         <%= section.course.name %>
+       </td>
+       <td>
+         <%= section.section_no %>
+       </td>
+       <td>
+         <%= section.course.department.name %>
+       </td>
+      </tr>
+    <% end  %>
+  </table>
+</div>
+  </div>
+</div>
+

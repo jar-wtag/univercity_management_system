@@ -1,0 +1,13 @@
+<%= link_to("Back", department_course_sections_path, class: "back-list" ) %>
+
+<div class="section create">
+  <h2> New Section</h2>
+
+  <%= simple_form_for [@department, @course, @section] do |f| %>
+
+    <%= f.input :section_no %>
+
+    <%= f.button :submit %>
+  <% end %>
+</div>
+

@@ -1,0 +1,14 @@
+<%= link_to("Back", departments_path, class: "back-list" ) %>
+
+<div class="department update">
+  <h2> Update Department</h2>
+
+  <%= simple_form_for @department do |f| %>
+
+  <%= render(partial: 'form', locals: {f: f}) %>
+
+
+  <%= f.button :submit %>
+
+  <% end %>
+</div>

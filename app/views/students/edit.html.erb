@@ -1,0 +1,21 @@
+<div class=" section index container">
+  <div class="row">
+    <%= link_to("Back", department_students_path, class: "back-list" ) %>
+
+
+    <%= simple_form_for ([@department, @student]) do |f| %>
+
+      <%= f.input :name %>
+      <%= f.input :age %>
+      <%= f.input :roll %>
+
+      <%= f.fields_for :student_profile do |ff| %>
+        <%= ff.input :year %>
+        <%= ff.input :result %>
+
+      <% end %>
+
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

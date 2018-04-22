@@ -1,0 +1,40 @@
+<div class=" section index container">
+  <div class="row">
+    <h4><span style="font-weight: bold;">Department:</span> <%= @course.department.name %> </h4>
+  <h4>Course: <%= @course.name %> </h4>
+  <h2> Section details </h2>
+
+  <%= link_to("Add New Section", new_department_course_section_path, class: 'btn btn-primary') %>
+  <br/><br/>
+  <table class="table table-bordered table-stripped width_setting" class="listing" summary="section-list">
+    <tr class="header">
+      <th>Id</th>
+      <th> Section_no</th>
+      <th> Student Profile</th>
+      <th> Actions</th>
+    </tr>
+    <% @sections.each do |section| %>
+      <tr>
+        <td>
+          <%= section.id %>
+        </td>
+        <td>
+          <%= section.section_no %>
+        </td>
+        <td class="actions">
+          <%= link_to(section.student_profiles.uniq.count, student_profiles_path(ids: section.student_profiles.ids, section_id: section.id))%>
+        </td>
+        <td class="actions">
+          <%= link_to("Show", department_course_section_path(@department, @course, section), class: 'btn btn-primary') %>
+          <%= link_to("Edit", edit_department_course_section_path(@department, @course, section), class: 'btn btn-primary') %>
+          <%= link_to("Destroy", department_course_section_path(@department, @course, section), class: 'btn btn-primary') %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+    <%= link_to("Back", department_courses_path, class: 'btn btn-primary') %>
+  </div>
+</div>
+
+
+

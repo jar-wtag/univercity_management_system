@@ -1,0 +1,42 @@
+<div class=" section index container">
+  <div class="row">
+    <%= link_to("Back", student_profiles_path(ids: @section.student_profiles.ids, section_id: @section.id), class: 'btn btn-primary') %>
+    <div class="student profile create">
+      <h2> Add rest of the student</h2>
+      <h4> Those who are not included in section no <%= @section.section_no %> </h4>
+        <table class="table table-bordered table-stripped width_setting">
+          <tr>
+            <th>id</th>
+            <th>Students Name</th>
+            <th>Students Age</th>
+            <th>Students Roll</th>
+            <th>Included in section </th>
+            <th>Action</th>
+          </tr>
+        <% @students.each do |student| %>
+            <tr>
+              <td>
+                <%= student.id %>
+              </td>
+              <td>
+                <%= student.name %>
+              </td>
+              <td>
+                <%= student.age %>
+              </td>
+              <td>
+                <%= student.roll %>
+              </td>
+              <td>
+                  <%= student.sections.first.section_no if student.sections.present?  %>
+              </td>
+              <td class="action">
+                <%= link_to("Add", student_profiles_path(section_id: @section.id, student_id: student.id), method: :post, class: 'btn btn-primary') %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+    </div>
+  </div>
+</div>
+
